@@ -32,15 +32,20 @@ while True:
         print("n root = ", n_root)
         for i in range(0, 100):
             n_root = nextprime(n_root)
+            print("q = ", n_root, end=" ")
             if (n % n_root == 0):
+                print("YES")
                 break
-        print("next prime", n_root)
+            print("NO")
         q = n_root
         p = n//q
+        print(f"p = {p}")
         tot = (p-1)*(q-1)
+        print(f"tot = {tot}")
         d = pow(e, -1, tot)
+        print(f"d = {d}")
         dec = pow(c, d, n)
-        print( f"result: {dec}")
+        print( f"m= {dec}")
         print( cun.long_to_bytes(dec).decode())
 
     elif (version == 'B'):
@@ -49,31 +54,38 @@ while True:
             print("YES")
         print(f"p = {p}")
         tot = (p)*(p-1)
+        print(f"tot = {tot}")
         d = pow(e, -1, tot)
+        print(f"d = {d}")
         dec = pow(c, d, n)
-        print( f"result: {dec}")
+        print( f"m= {dec}")
         print( cun.long_to_bytes(dec).decode())
     elif (version == 'C'):
         for i in range(2**15, 2**16+1):
             try:
+                
                 dec = pow(c, i, n)
                 print( cun.long_to_bytes(dec).decode())
+                print(f"e = {i}")
+                print(f"m = {dec}")
                 break
             except:
+                print(f"NO {i}")
                 continue
     elif (version == 'D'):
         try:
             cube_root = find_invpow(c, 3)
             dec = int(cube_root)
-            print( "root: ", dec)
-            print("raw", cube_root)
+            print( "cube root: ", dec)
             print( cun.long_to_bytes(dec).decode())
         except:
             print("NO")
     elif (version == 'E'):
         try:
             d = pow(e, -1, n-1)
+            print(f"d = {d}")
             dec = pow(c, d, n)
+            print( f"m= {dec}")
             print( cun.long_to_bytes(dec).decode())
         except:
             print("NO")
